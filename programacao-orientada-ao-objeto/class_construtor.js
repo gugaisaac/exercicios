@@ -9,7 +9,6 @@ class Cachorro {
 }
 
 // let labrador = new Cachorro("Labrador", 4,"Amarelo" );
-
 // console.log(labrador);
 
 export {Cachorro};
