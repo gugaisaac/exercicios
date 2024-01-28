@@ -1,7 +1,79 @@
+.container{
+    height: 98vh;
+    width: 98vw;
+    position: relative;
+    
+}
 #tamanho {
-    height: 100vh;
-    width: 100vw;
-    background-color: aquamarine;
+    height: 60vh;
+    width: 60vw;
+    background-color: rgb(68, 58, 207);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 10vw;
+    text-align: center;
+}
+/*Coluna  1*/
+#bloco1{
+    height: 33%;
+    width: 33%;
+    border: 1px solid black;
+}
+#bloco2{
+    height: 33%;
+    width: 33%;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid black;
+}
+#bloco3{
+    height: 33%;
+    width: 33%;
+    background-color: rgb(0, 255, 242);
+    border: 1px solid black;
+}
+
+/*Coluna  2*/
+#bloco4{
+    height: 33%;
+    width: 33%;
+    background-color: green;
+    border: 1px solid black;
+}
+#bloco5{
+    height: 33%;
+    width: 33%;
+    background-color: yellow;
+    border: 1px solid black;
+}
+#bloco6{
+    height: 33%;
+    width: 33%;
+    background-color: chocolate;
+    border: 1px solid black;
+}
+
+/*Coluna  3*/
+#bloco7{
+    height: 33%;
+    width: 33%;
+    background-color: darkmagenta;
+    border: 1px solid black;
+}
+#bloco8{
+    height: 33%;
+    width: 33%;
+    background-color: grey;
+    border: 1px solid black;
+}
+#bloco9{
+    height: 33%;
+    width: 33%;
+    background-color: maroon;
+    border: 1px solid black;
 }
 
 /* fazer um jogo da velha grande aq */
