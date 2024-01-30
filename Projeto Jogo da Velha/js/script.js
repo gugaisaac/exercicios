@@ -8,6 +8,8 @@ let bloco7 = document.querySelector("#bloco7");
 let bloco8 = document.querySelector("#bloco8");
 let bloco9 = document.querySelector("#bloco9");
 
+let botaoResetar = document.querySelector("#btn_resetar");
+
 let elementBloco1 = document.getElementById("bloco1");
 let elementBloco2 = document.getElementById("bloco2");
 let elementBloco3 = document.getElementById("bloco3");
@@ -29,41 +31,64 @@ let trava7 = true;
 let trava8 = true;
 let trava9 = true;
 
+botaoResetar.addEventListener("click", function(){
+    atualizarPagina();
+})
+
 let jogo = [0,1,2,3,4,5,6,7,8];
 let ganhou = true;
 function verificarJogo(){
-    console.log(ganhou);
     if(jogo[0] == jogo[1] && jogo[1]== jogo[2] ){
         alert(`PARABENS JOGADOR ${jogo[0]} você ganhou o jogo da velha`)
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[3] == jogo[4] && jogo[4]== jogo[5]){
         alert(`PARABENS JOGADOR ${jogo[3]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[6] == jogo[7] && jogo[7]== jogo[8]){
         alert(`PARABENS JOGADOR ${jogo[6]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[0] == jogo[3] && jogo[3]== jogo[6]){
         alert(`PARABENS JOGADOR ${jogo[0]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[1] == jogo[4] && jogo[4]== jogo[7]){
         alert(`PARABENS JOGADOR ${jogo[1]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[2] == jogo[5] && jogo[5]== jogo[8]){
         alert(`PARABENS JOGADOR ${jogo[2]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[0] == jogo[4] && jogo[4]== jogo[8]){
         alert(`PARABENS JOGADOR ${jogo[0]} você ganhou o jogo da velha`);
         ganhou = true;
+        atualizarPagina();
     } else if (jogo[2] == jogo[4] && jogo[4]== jogo[6]){
         alert(`PARABENS JOGADOR ${jogo[2]} você ganhou o jogo da velha`);
         ganhou = true;
-    } 
-    //FAZER FUNCIONAR A VELHA
-    if(!ganhou){
-        alert("Vishh, vocês são muito bons, deu velha :/")
+        atualizarPagina();
     }
+    verificarCompleto();
 }
 
+function verificarCompleto(){
+    let cont=0;
+    for(let i=0;i<jogo.length;i++){
+        if(jogo[i] == "X" || jogo[i] == "O"){
+            cont++;
+        }
+    }
+    if(cont==9){
+        alert("Vishh, vocês são muito bons, deu velha :/")
+        atualizarPagina();
+    }
+}
+function atualizarPagina(){
+    window.location.reload(true);
+}
 bloco1.addEventListener("click", function(){
     if(trava1){
         if(player==1){
@@ -235,7 +260,7 @@ bloco8.addEventListener("click", function(){
     verificarJogo();
 });
 bloco9.addEventListener("click", function(){
-    if(trava9){//variavel para n adicionar mais de um texto aq
+    if(trava9){
         if(player==1){
             let texto = document.createTextNode("X");
             elementBloco9.appendChild(texto);

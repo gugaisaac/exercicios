@@ -1,9 +1,10 @@
 .container{
-    height: 98vh;
-    width: 98vw;
+    height: 96vh;
+    width: 96vw;
     position: relative;
-    
+    text-align: center;
 }
+/* //arrumar dps o quadrado para a linha ficar melhor vista */
 #tamanho {
     height: 60vh;
     width: 60vw;
@@ -18,6 +19,11 @@
     text-align: center;
 }
 /*Coluna  1*/
+.quadrado{
+    height: 30%;
+    width: 30%;
+    border: 1px solid black;
+}
 #bloco1{
     height: 33%;
     width: 33%;
@@ -76,4 +82,12 @@
     border: 1px solid black;
 }
 
-/* fazer um jogo da velha grande aq */
+.btn{
+    position: relative;
+    border: none;
+    padding: 10px;
+    
+}
+/* h1{
+    position: relative;
+} */
