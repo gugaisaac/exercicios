@@ -9,6 +9,7 @@ let bloco8 = document.querySelector("#bloco8");
 let bloco9 = document.querySelector("#bloco9");
 
 let botaoResetar = document.querySelector("#btn_resetar");
+let botaoJogoIA = document.querySelector("#btn_jogarIA");
 
 let elementBloco1 = document.getElementById("bloco1");
 let elementBloco2 = document.getElementById("bloco2");
@@ -34,9 +35,13 @@ let trava9 = true;
 botaoResetar.addEventListener("click", function(){
     atualizarPagina();
 })
+// botaoJogoIA.addEventListener("click", function(){
+    
+// })
+
 
 let jogo = [0,1,2,3,4,5,6,7,8];
-let ganhou = true;
+let ganhou = false;
 function verificarJogo(){
     if(jogo[0] == jogo[1] && jogo[1]== jogo[2] ){
         alert(`PARABENS JOGADOR ${jogo[0]} você ganhou o jogo da velha`)
@@ -76,14 +81,16 @@ function verificarJogo(){
 
 function verificarCompleto(){
     let cont=0;
-    for(let i=0;i<jogo.length;i++){
-        if(jogo[i] == "X" || jogo[i] == "O"){
-            cont++;
+    if(!ganhou){
+        for(let i=0;i<jogo.length;i++){
+            if(jogo[i] == "X" || jogo[i] == "O"){
+                cont++;
+            }
         }
-    }
-    if(cont==9){
-        alert("Vishh, vocês são muito bons, deu velha :/")
-        atualizarPagina();
+        if(cont==9){
+            alert("Vishh, vocês são muito bons, deu velha :/")
+            atualizarPagina();
+        }
     }
 }
 function atualizarPagina(){
@@ -93,11 +100,13 @@ bloco1.addEventListener("click", function(){
     if(trava1){
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco1.style.color = '#00ff0d';
             elementBloco1.appendChild(texto);
             player = 2;
             jogo[0] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco1.style.color = '#ff0000';
             elementBloco1.appendChild(texto);
             player = 1;
             jogo[0] = "O";
@@ -115,11 +124,13 @@ bloco2.addEventListener("click", function(){
     if(trava2){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco2.style.color = '#00ff0d';
             elementBloco2.appendChild(texto);
             player = 2;
             jogo[1] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco2.style.color = '#ff0000';
             elementBloco2.appendChild(texto);
             player = 1;
             jogo[1] = "O";
@@ -136,11 +147,13 @@ bloco3.addEventListener("click", function(){
     if(trava3){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco3.style.color = '#00ff0d';
             elementBloco3.appendChild(texto);
             player = 2;
             jogo[2] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco3.style.color = '#ff0000';
             elementBloco3.appendChild(texto);
             player = 1;
             jogo[2] = "O";
@@ -158,11 +171,13 @@ bloco4.addEventListener("click", function(){
     if(trava4){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco4.style.color = '#00ff0d';
             elementBloco4.appendChild(texto);
             player = 2;
             jogo[3] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco4.style.color = '#ff0000';
             elementBloco4.appendChild(texto);
             player = 1;
             jogo[3] = "O";
@@ -179,11 +194,13 @@ bloco5.addEventListener("click", function(){
     if(trava5){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco5.style.color = '#00ff0d';
             elementBloco5.appendChild(texto);
             player = 2;
             jogo[4] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco5.style.color = '#ff0000';
             elementBloco5.appendChild(texto);
             player = 1;
             jogo[4] = "O";
@@ -200,11 +217,13 @@ bloco6.addEventListener("click", function(){
     if(trava6){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco6.style.color = '#00ff0d';
             elementBloco6.appendChild(texto);
             player = 2;
             jogo[5] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco6.style.color = '#ff0000';
             elementBloco6.appendChild(texto);
             player = 1;
             jogo[5] = "O";
@@ -221,11 +240,13 @@ bloco7.addEventListener("click", function(){
     if(trava7){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco7.style.color = '#00ff0d';
             elementBloco7.appendChild(texto);
             player = 2;
             jogo[6] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco7.style.color = '#ff0000';
             elementBloco7.appendChild(texto);
             player = 1;
             jogo[6] = "O";
@@ -242,11 +263,13 @@ bloco8.addEventListener("click", function(){
     if(trava8){//variavel para n adicionar mais de um texto aq
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco8.style.color = '#00ff0d';
             elementBloco8.appendChild(texto);
             player = 2;
             jogo[7] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco8.style.color = '#ff0000';
             elementBloco8.appendChild(texto);
             player = 1;
             jogo[7] = "O";
@@ -263,11 +286,13 @@ bloco9.addEventListener("click", function(){
     if(trava9){
         if(player==1){
             let texto = document.createTextNode("X");
+            elementBloco9.style.color = '#00ff0d';
             elementBloco9.appendChild(texto);
             player = 2;
             jogo[8] = "X";
         }else{
             let texto = document.createTextNode("O");
+            elementBloco9.style.color = '#ff0000';
             elementBloco9.appendChild(texto);
             player = 1;
             jogo[8] = "O";
