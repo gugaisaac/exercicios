@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.typekit.net/twx8xgj.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body onload="atualizarFeed()">
+    <header>
+        <div class="menu">
+            <ul>
+                <img src="assets/default_transparent_765x625.png" id="logo">
+                <li><a href="#">Ver Vagas</a></li>
+                <li><a href="#">Abrir Vagas</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="pesquisa">
+        <p><h1>Encontre o emprego dos sonhos</h1></p>
+        <p><h3>Somos o site com mais vagas de tecnologia no mercado,<br>
+                direcionadas a home office</h3></p>
+        <div id="barra-de-pesquisa"><input type="text" name="busca" placeholder="Digite a vaga que está buscando"><button id="btn-procurar">Procurar</button></div>
+    </div><div class="conteudo">
+        <div class="feed-vagas" id="feed-vagas"></div>
+    </div>
+</body>
+<script src=""></script>
+<script>
+
+function atualizarFeed() {
+    fetch("/vagas/listar").then(function (resposta) {
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                var feed = document.getElementById("feed-vagas");
+                var mensagem = document.createElement("span");
+                mensagem.innerHTML = "Nenhum resultado encontrado."
+                feed.appendChild(mensagem);
+                throw "Nenhum resultado encontrado!!";
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var feed = document.getElementById("feed-vagas");
+                feed.innerHTML = "";
+                for (var i = 0; i < resposta.length; i++) {
+                    var publicacao = resposta[i];
+
+                    // criando e manipulando elementos do HTML via JavaScript
+                    var divPublicacao = document.createElement("div");
+                    var spanTitulo = document.createElement("span");
+                    var spanSalario = document.createElement("span");
+                    var spanEmpresa = document.createElement("span");
+                    var divDescricao = document.createElement("div");
+                    var divButtons = document.createElement("div");
+
+                    
+                    spanTitulo.innerHTML = "Título: <b>"+publicacao.titulo_vaga+"</b>";
+                    spanEmpresa.innerHTML = "Empresa: <b>"+publicacao.empresa_vaga+"</b>";
+                    divDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao_vaga+"</b>";
+                    spanSalario.innerHTML = "Salario: <b>"+publicacao.salario+"</b>";
+                    
+                    divPublicacao.className = "publicacao";
+                    spanTitulo.id = "inputNumero"+publicacao.idVagas;
+                    spanTitulo.className = "publicacao-titulo";
+                    divDescricao.className = "publicacao-descricao";
+                    spanSalario.className = "publicacao-salario";
+                    spanEmpresa.className = "publicacao-empresa";
+
+                    divButtons.className = "div-buttons"
+
+                    
+                    divPublicacao.appendChild(spanTitulo);
+                    divPublicacao.appendChild(spanEmpresa);
+                    divPublicacao.appendChild(divDescricao);
+                    divPublicacao.appendChild(spanSalario);
+                    divPublicacao.appendChild(divButtons);
+                    feed.appendChild(divPublicacao);
+                }
+
+
+            });
+        } else {
+            throw('Houve um erro na API!');
+        }
+    }).catch(function(resposta) {
+        console.error(resposta);
+
+    });
+}
+
+</script>
+</html>
