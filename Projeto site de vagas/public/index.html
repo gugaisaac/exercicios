@@ -30,7 +30,7 @@
 </body>
 <script src=""></script>
 <script>
-
+function atualizarImagem(){}
 function atualizarFeed() {
     fetch("/vagas/listar").then(function (resposta) {
         if (resposta.ok) {
@@ -56,13 +56,18 @@ function atualizarFeed() {
                     var spanSalario = document.createElement("span");
                     var spanEmpresa = document.createElement("span");
                     var divDescricao = document.createElement("div");
+                    var divLogoEmpresa = document.createElement("div");
                     var divButtons = document.createElement("div");
+                    let imgEmpresa = document.createElement("img");
+                    var spanID = document.createElement("span");
 
-                    
+                    spanID.innerHTML = "ID: <b>" + publicacao.idVagas + "</b>";
                     spanTitulo.innerHTML = "Título: <b>"+publicacao.titulo_vaga+"</b>";
                     spanEmpresa.innerHTML = "Empresa: <b>"+publicacao.empresa_vaga+"</b>";
                     divDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao_vaga+"</b>";
                     spanSalario.innerHTML = "Salario: <b>"+publicacao.salario+"</b>";
+                    imgEmpresa.src = publicacao.logo;
+                    
                     
                     divPublicacao.className = "publicacao";
                     spanTitulo.id = "inputNumero"+publicacao.idVagas;
@@ -70,16 +75,24 @@ function atualizarFeed() {
                     divDescricao.className = "publicacao-descricao";
                     spanSalario.className = "publicacao-salario";
                     spanEmpresa.className = "publicacao-empresa";
+                    divLogoEmpresa.className = "logo-empresa";
+                    imgEmpresa.className = "img-empresa";
+                    
 
                     divButtons.className = "div-buttons"
 
-                    
+                    divPublicacao.appendChild(spanID);
                     divPublicacao.appendChild(spanTitulo);
                     divPublicacao.appendChild(spanEmpresa);
                     divPublicacao.appendChild(divDescricao);
                     divPublicacao.appendChild(spanSalario);
                     divPublicacao.appendChild(divButtons);
+                    divPublicacao.appendChild(divLogoEmpresa);
+
+                    divLogoEmpresa.appendChild(imgEmpresa);
+
                     feed.appendChild(divPublicacao);
+                    
                 }
 
 

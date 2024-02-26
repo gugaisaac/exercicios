@@ -7,4 +7,6 @@ router.get("/listar", function(req,res){
     vagasController.listar(req,res);
 });
 
+router.get("/buscarImagem:id")
+
 module.exports = router;

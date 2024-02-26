@@ -33,7 +33,7 @@ header{
 .feed-vagas{
     width: 70%;
     height: 70vh;
-    background-color: #ad2d2d;
+    /* background-color: #ad2d2d; */
 }
 #logo{
     /* margin-top: 2px;*/
@@ -88,3 +88,32 @@ input{
     display: flex;
 }
 
+
+.publicacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    border: 2px solid #000000;
+    padding: 2vh;
+    margin-top: 2vh;
+}
+
+.publicacao>*:not(:last-child) {
+    padding: 0 0 10px 0;
+    padding-left: 14vh;
+}
+.logo-empresa {
+    background-color: lightblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.img-empresa{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
