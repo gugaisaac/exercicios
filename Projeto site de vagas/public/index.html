@@ -35,8 +35,8 @@ function atualizarFeed() {
     fetch("/vagas/listar").then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
-                var feed = document.getElementById("feed-vagas");
-                var mensagem = document.createElement("span");
+                let feed = document.getElementById("feed-vagas");
+                let mensagem = document.createElement("span");
                 mensagem.innerHTML = "Nenhum resultado encontrado."
                 feed.appendChild(mensagem);
                 throw "Nenhum resultado encontrado!!";
@@ -45,27 +45,30 @@ function atualizarFeed() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                var feed = document.getElementById("feed-vagas");
+                let feed = document.getElementById("feed-vagas");
                 feed.innerHTML = "";
-                for (var i = 0; i < resposta.length; i++) {
-                    var publicacao = resposta[i];
+                for (let i = 0; i < resposta.length; i++) {
+                    let publicacao = resposta[i];
 
                     // criando e manipulando elementos do HTML via JavaScript
-                    var divPublicacao = document.createElement("div");
-                    var spanTitulo = document.createElement("span");
-                    var spanSalario = document.createElement("span");
-                    var spanEmpresa = document.createElement("span");
-                    var divDescricao = document.createElement("div");
-                    var divLogoEmpresa = document.createElement("div");
-                    var divButtons = document.createElement("div");
+                    let divPublicacao = document.createElement("div");
+                    let spanTitulo = document.createElement("span");
+                    let spanSalario = document.createElement("span");
+                    let spanEmpresa = document.createElement("span");
+                    let divDescricao = document.createElement("div");
+                    let divLogoEmpresa = document.createElement("div");
+                    let divButtons = document.createElement("div");
                     let imgEmpresa = document.createElement("img");
-                    var spanID = document.createElement("span");
+                    let spanID = document.createElement("span");
+                    let btnVagas = document.createElement("button");
+
 
                     spanID.innerHTML = "ID: <b>" + publicacao.idVagas + "</b>";
                     spanTitulo.innerHTML = "Título: <b>"+publicacao.titulo_vaga+"</b>";
                     spanEmpresa.innerHTML = "Empresa: <b>"+publicacao.empresa_vaga+"</b>";
                     divDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao_vaga+"</b>";
                     spanSalario.innerHTML = "Salario: <b>"+publicacao.salario+"</b>";
+                    btnVagas.innerHTML = "Ver Vagas"
                     imgEmpresa.src = publicacao.logo;
                     
                     
@@ -77,9 +80,10 @@ function atualizarFeed() {
                     spanEmpresa.className = "publicacao-empresa";
                     divLogoEmpresa.className = "logo-empresa";
                     imgEmpresa.className = "img-empresa";
+                    btnVagas.className = "btn-ver-vagas";
                     
 
-                    divButtons.className = "div-buttons"
+                    divButtons.className = "div-buttons";
 
                     divPublicacao.appendChild(spanID);
                     divPublicacao.appendChild(spanTitulo);
@@ -88,6 +92,7 @@ function atualizarFeed() {
                     divPublicacao.appendChild(spanSalario);
                     divPublicacao.appendChild(divButtons);
                     divPublicacao.appendChild(divLogoEmpresa);
+                    divButtons.appendChild(btnVagas);
 
                     divLogoEmpresa.appendChild(imgEmpresa);
 

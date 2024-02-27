@@ -117,3 +117,22 @@ input{
     height: 100%;
     border-radius: 50%;
 }
+
+.div-buttons {
+    width: 2vw;
+    height: 4vh;
+    background-color: azure;
+    position: absolute;
+    margin-left: 55%;
+    justify-content: center;
+}
+
+.btn-ver-vagas{
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+    background-color: #ad2d2d;
+    font-weight: bolder;
+    border: 0.3vh solid #ad2d2d;
+    
+}
