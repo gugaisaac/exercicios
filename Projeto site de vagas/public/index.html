@@ -30,7 +30,9 @@
 </body>
 <script src=""></script>
 <script>
-function atualizarImagem(){}
+// function buscarVaga(){
+//     fetch("/vagas")
+// }
 function atualizarFeed() {
     fetch("/vagas/listar").then(function (resposta) {
         if (resposta.ok) {
@@ -55,7 +57,7 @@ function atualizarFeed() {
                     let spanTitulo = document.createElement("span");
                     let spanSalario = document.createElement("span");
                     let spanEmpresa = document.createElement("span");
-                    let divDescricao = document.createElement("div");
+                    let spanDescricao = document.createElement("span");
                     let divLogoEmpresa = document.createElement("div");
                     let divButtons = document.createElement("div");
                     let imgEmpresa = document.createElement("img");
@@ -66,7 +68,7 @@ function atualizarFeed() {
                     spanID.innerHTML = "ID: <b>" + publicacao.idVagas + "</b>";
                     spanTitulo.innerHTML = "Título: <b>"+publicacao.titulo_vaga+"</b>";
                     spanEmpresa.innerHTML = "Empresa: <b>"+publicacao.empresa_vaga+"</b>";
-                    divDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao_vaga+"</b>";
+                    spanDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao_vaga+"</b>";
                     spanSalario.innerHTML = "Salario: <b>"+publicacao.salario+"</b>";
                     btnVagas.innerHTML = "Ver Vagas"
                     imgEmpresa.src = publicacao.logo;
@@ -75,7 +77,7 @@ function atualizarFeed() {
                     divPublicacao.className = "publicacao";
                     spanTitulo.id = "inputNumero"+publicacao.idVagas;
                     spanTitulo.className = "publicacao-titulo";
-                    divDescricao.className = "publicacao-descricao";
+                    spanDescricao.className = "publicacao-descricao";
                     spanSalario.className = "publicacao-salario";
                     spanEmpresa.className = "publicacao-empresa";
                     divLogoEmpresa.className = "logo-empresa";
@@ -88,7 +90,7 @@ function atualizarFeed() {
                     divPublicacao.appendChild(spanID);
                     divPublicacao.appendChild(spanTitulo);
                     divPublicacao.appendChild(spanEmpresa);
-                    divPublicacao.appendChild(divDescricao);
+                    divPublicacao.appendChild(spanDescricao);
                     divPublicacao.appendChild(spanSalario);
                     divPublicacao.appendChild(divButtons);
                     divPublicacao.appendChild(divLogoEmpresa);
